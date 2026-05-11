@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Gugloo ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Great Vibes',cursive;
+    background:linear-gradient(135deg,#ffd6e7,#fff4f8,#ffe8f1);
+    overflow-x:hidden;
+    color:#fff;
+    min-height:100vh;
+    position:relative;
+}
+
+/* Floating hearts */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    /*color:rgba(255,255,255,0.5);*/
+    color: #cc0000;
+    animation:float 10s linear infinite;
+    font-size:20px;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.main-title{
+    font-family:'Sacramento',cursive;
+    font-size:5rem;
+    color:#cc0000;
+    text-shadow:0 4px 20px rgba(255, 255,255, 1);
+    margin-top:20px;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    color:#cc3333;
+    margin-top:10px;
+    margin-bottom:40px;
+}
+
+/* Letter */
+.letter-box{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:35px;
+    border-radius:25px;
+    line-height:1.9;
+    color:#cc0000;
+    font-size:1.05rem;
+    text-align:left;
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+}
+
+.letter-box p{
+    margin-bottom:20px;
+}
+
+/* Cards */
+.cards-section{
+    margin-top:70px;
+}
+
+.cards-title{
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    width:300px;
+    height:220px;
+    perspective:1000px;
+    cursor:pointer;
+}
+
+.card-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform 1s;
+}
+
+.card.flipped .card-inner{
+    transform:rotateY(180deg);
+}
+
+.card-front,
+.card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+}
+
+.card-front{
+    background:linear-gradient(135deg,#ff8fb1,#ff6f91);
+    font-size:1.4rem;
+    font-weight:600;
+}
+
+.card-back{
+    background:#cc0000;
+    backdrop-filter:blur(12px);
+    transform:rotateY(180deg);
+    font-size:1rem;
+    line-height:1.8;
+}
+
+/* Footer */
+.footer{
+    margin-top:70px;
+    font-size:1.2rem;
+    color:#fff;
+}
+
+.footer span{
+    font-family:'Sacramento',cursive;
+    font-size:2.2rem;
+}
+
+/* Button */
+.music-btn{
+    margin-top:25px;
+    background:#fff;
+    color:#ff5f8f;
+    border:none;
+    padding:14px 28px;
+    border-radius:40px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.music-btn:hover{
+    transform:scale(1.08);
+}
+
+.love-game{
+    margin-top:80px;
+    text-align:center;
+}
+
+.love-title{
+    font-size:2.3rem;
+    color:#d63384;
+    margin-bottom:15px;
+    font-family:'Great Vibes',cursive;
+}
+
+.love-subtitle{
+    color:#8b1e4f;
+    margin-bottom:35px;
+    font-size:1.1rem;
+}
+
+.love-buttons{
+    position:relative;
+    height:220px;
+}
+
+.yes-btn,
+.no-btn{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:0.3s;
+    position:absolute;
+    font-weight:600;
+}
+
+.yes-btn{
+    background:linear-gradient(135deg,#ff5c8a,#ff2e63);
+    color:white;
+    left:50%;
+    transform:translateX(-120%);
+    box-shadow:0 10px 25px rgba(255,46,99,0.25);
+}
+
+.no-btn{
+    background:#fff;
+    color:#ff2e63;
+    border:2px solid #ff5c8a;
+    left:50%;
+    transform:translateX(20%);
+}
+
+.yes-btn:hover,
+.no-btn:hover{
+    transform:scale(1.08);
+}
+
+.final-message{
+    display:none;
+    margin-top:50px;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.5);
+    backdrop-filter:blur(10px);
+    color:#7a244d;
+    line-height:2;
+    animation:fadeIn 1s ease;
+}
+
+.final-message h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.envelope-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:60px;
+    perspective:1200px;
+}
+
+.envelope-wrapper{
+    position:relative;
+    width:700px;
+    height:450px;
+    cursor:pointer;
+}
+
+.envelope{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+/* Envelope Body */
+
+.envelope-front{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ffb6c1,#ff8fab);
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:2;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    color:white;
+    text-align:center;
+}
+
+.envelope-front h2{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.envelope-front p{
+    font-size:2rem;
+    font-family:'Great Vibes',cursive;
+}
+
+/* Flap */
+
+.envelope-flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:220px;
+    background:#ff6f91;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:1s;
+    z-index:3;
+}
+
+/* Letter */
+
+.letter{
+    position:absolute;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%) translateY(0);
+    width:88%;
+    height:88%;
+    background:#fff8fb;
+    border-radius:12px;
+    padding:40px;
+    overflow-y:auto;
+    z-index:1;
+    transition:1.2s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.letter-content{
+    color:#8b1e4f;
+    line-height:2;
+    font-size:1.1rem;
+}
+
+.letter-content h2{
+    margin-bottom:25px;
+    font-family:'Great Vibes',cursive;
+    font-size:3rem;
+    color:#ff2e63;
+}
+
+.letter-content h3{
+    margin-top:35px;
+    font-family:'Great Vibes',cursive;
+    font-size:2rem;
+    color:#ff2e63;
+}
+
+/* OPEN ENVELOPE */
+
+.envelope.open .envelope-flap{
+    transform:rotateX(180deg);
+    z-index:1;
+}
+
+.envelope.open .letter{
+    transform:translateX(-50%) translateY(-320px);
+    z-index:5;
+}
+
+.envelope{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:visible;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .envelope-wrapper{
+        width:95%;
+        height:300px;
+    }
+
+    .letter{
+        padding:25px;
+    }
+
+    .letter-content{
+        font-size:1rem;
+    }
+
+}
+
+#musicToggle{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff5c8a,#ff2e63);
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(255,46,99,0.3);
+    z-index:999;
+    transition:0.3s;
+}
+
+#musicToggle:hover{
+    transform:scale(1.1);
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .main-title{
+        font-size:3.8rem;
+    }
+
+    .card{
+        width:100%;
+        max-width:340px;
+    }
+
+    .letter-box{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="container">
+
+    <h1 class="main-title">❤️ Sorry Gugloo ❤️</h1>
+    <p class="subtitle">
+        An apology with love, regret, and hope...
+    </p>
+
+    <<div class="envelope-container">
+
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+
+        <!-- Envelope -->
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-front">
+                <h2>💌</h2>
+                <p>Click To Open My Heart 💔</p>
+            </div>
+
+            <div class="envelope-flap"></div>
+
+            <!-- Letter -->
+
+            <div class="letter" id="letter">
+
+                <div class="letter-content">
+
+                    <h3>My Dearest Gugloo❤️</h3>
+
+                    <p>
+                        I want to take a moment to express my sincerest apologies for not being there for you in the way that you needed during a challenging time.
+                        I recognize that I was emotionally unavailable (acted like EQ=0), and I can only imagine how isolating and frustrating that must have felt for you.
+                    </p>
+
+                    <p>
+                        You deserved my full attention, love, and support, especially during such a difficult moment.
+                        Instead, I turned inward when I should have been reaching out to you.
+                        I regret missing those moments when you relied on me.
+                    </p>
+
+                    <p>
+                    I want you to know that your feelings are valid.
+                    You are incredibly important to me, and I hate that I didn’t show you the support you needed.
+                    </p>
+
+                    <p>
+                        I’m committed to understanding what kept me from being present, and I want to work on being more open and available for you in the future.
+                        You deserve a partner who stands beside you wholeheartedly, and I am determined to become that person.
+                    </p>
+
+                    <p>
+                        I regret every moment that made you feel alone. 😭
+                    </p>
+
+                    <p>
+                        If you’re open to it, I would really love to talk about how we can move forward together.
+                        Thank you for your patience and for loving me even when I faltered.
+                    </p>
+
+                    <p>
+                        I care about you deeply, Kaka.
+                        More deeply than words can ever fully explain.
+                    </p>
+
+
+                    <h4>
+                        With All my Love,<br>
+                        Nanha ❤️
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="cards-section">
+
+        <h2 class="cards-title">
+            Click the cards, Gugloo 🥺
+        </h2>
+
+        <div class="cards">
+
+            <!-- Card 1 -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        💌 Click Me
+                    </div>
+
+                    <div class="card-back">
+                        If I could go back in time,
+                        I would hold you tighter,
+                        listen longer,
+                        and never let you feel alone again. ❤️
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        🌸 One More?
+                    </div>
+
+                    <div class="card-back">
+                        Every heartbeat of mine whispers your name, Kaka.
+                        I am not perfect...
+                        I just want another chance to love you better. 🥺
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        ❤️ Last Surprise
+                    </div>
+
+                    <div class="card-back">
+                        No matter how dark the moment gets,
+                        my favorite place in this world
+                        will always be beside you. 🌙✨
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<div class="love-game">
+
+    <h2 class="love-title">
+        Maybe you are still upset with me... 🥺
+    </h2>
+
+    <p class="love-subtitle">
+        But can you answer one tiny question honestly?
+    </p>
+
+    <div class="love-buttons">
+
+        <button class="yes-btn" onclick="showLoveMessage()">
+            I Still Love You ❤️
+        </button>
+
+        <button class="no-btn" id="movingBtn">
+            No I Don't 😤
+        </button>
+
+    </div>
+
+</div>
+
+<div id="finalMessage" class="final-message">
+
+    <h1>🥺❤️</h1>
+
+    <p>
+        I knew your heart was too beautiful to stop loving me completely...
+    </p>
+
+    <p>
+        Thank you for still being here, Gugloo.
+    </p>
+
+    <p>
+        I promise I'll love you softer, better, and more honestly from now on and will be there with you even when you don't say it.
+        You are my favorite human forever ❤️
+    </p>
+
+</div>
+
+<script>
+
+function openEnvelope(){
+
+    document
+        .getElementById("envelope")
+        .classList.toggle("open");
+
+}
+
+</script>
+<script>
+
+/* Floating hearts */
+
+const heartsContainer = document.querySelector('.hearts');
+
+function createHeart(){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+    heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,300);
+
+/* Card Flip */
+
+function flipCard(card){
+    card.classList.toggle('flipped');
+
+    document.getElementById("bgMusic").play();
+}
+
+/* Love Message */
+
+function showLove(){
+    document.getElementById('loveMessage').style.display = 'block';
+
+    window.scrollTo({
+        top:document.body.scrollHeight,
+        behavior:'smooth'
+    });
+}
+
+
+
+</script>
+<audio id="bgMusic" loop>
+    <source src="https://github.com/mrenigmatic-24/songs/raw/refs/heads/main/Tumse%20Behtar%20%20music.mp3" type="audio/mpeg">
+</audio>
+<button id="musicToggle" onclick="toggleMusic()">
+    🔊
+</button>
+<script>
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicToggle");
+
+function toggleMusic(){
+
+    if(music.paused){
+        music.play();
+        musicBtn.innerHTML = "🔊";
+    }else{
+        music.pause();
+        musicBtn.innerHTML = "🔈";
+    }
+
+}
+
+</script>
+
+<script>
+
+const movingBtn = document.getElementById("movingBtn");
+
+movingBtn.addEventListener("mouseover", () => {
+
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 120 - 60;
+
+    movingBtn.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+});
+
+function showLoveMessage(){
+
+    document.getElementById("finalMessage").style.display = "block";
+
+    window.scrollTo({
+        top:document.body.scrollHeight,
+        behavior:'smooth'
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
